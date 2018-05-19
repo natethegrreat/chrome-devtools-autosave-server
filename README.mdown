@@ -19,10 +19,23 @@ You should see something like "DevTools Autosave is running on http://127.0.0.1:
 
 Have you tried turn it it off and on again? Seriously, restart the system.
 
-## Run on OS launch
+## Run On Mac OS X and Ubuntu
 
 It might be annoying to open a terminal and type "autosave↵" every time you need to run Autosave. On Mac OS X and Ubuntu you can run Autosave on OS launch as a <a href="http://en.wikipedia.org/wiki/Daemon_(computing)">daemon</a>. To do so run:
 
     npm run-script -g autosave autostart
+
+## Run On Windows 
+
+On windows, you'll need to make two new files a .bat and .vbs files.
+
+The .bat file will run the command on cnd. In the .bat file paste in `autosave` The .vbs file will make the .bat file run in the background. After pasting in the code under to the .vbs file change the PATH in the .vbs file to the path of the .bat file.
+
+    set obj = CreateObject("WScript.Shell")
+    obj.Run chr(34) & " PATH OF THE .BAT FILE " & chr(34), 0
+    set WshShell = Nothing
+
+To make it run on startup open run through the shortcut `Win+R`and type in `shell:startup` then move the .vbs file into the startup folder and restart your pc. you should find the .vbs file running in the background at startup.
+
 
 It is [not yet available](https://github.com/NV/chrome-devtools-autosave-server/issues/9) on other operation systems.
